@@ -1,0 +1,28 @@
+@model List<SimpleStoreSite.Models.Category>
+
+<h2>Categories</h2>
+
+<p><a class="btn" href="/Categories/Create">New</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Id</td>
+            <td>@c.Name</td>
+            <td class="actions">
+                <a href="/Categories/Edit/@c.Id">Edit</a>
+                <a class="danger" href="/Categories/Delete/@c.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+@model SimpleStoreSite.Models.Category
+
+<h2>Edit Category</h2>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="row">
+        <label>Name</label>
+        <input name="Name" value="@Model.Name" />
+        <span class="err">@Html.ValidationMessage("Name")</span>
+    </div>
+
+    <button class="btn" type="submit">Save</button>
+    <a class="btn ghost" href="/Categories">Back</a>
+</form>

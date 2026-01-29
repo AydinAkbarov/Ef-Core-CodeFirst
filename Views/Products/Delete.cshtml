@@ -1,0 +1,16 @@
+@model SimpleStoreSite.Models.Product
+
+<h2>Delete Product</h2>
+
+<p>Are you sure?</p>
+
+<ul>
+    <li>Id: @Model.Id</li>
+    <li>Name: @Model.Name</li>
+    <li>Category: @(Model.Category?.Name ?? "-")</li>
+</ul>
+
+<form method="post" action="/Products/DeleteConfirmed/@Model.Id">
+    <button class="btn danger" type="submit">Delete</button>
+    <a class="btn ghost" href="/Products">Back</a>
+</form>

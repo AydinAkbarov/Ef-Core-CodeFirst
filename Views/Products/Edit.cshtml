@@ -1,0 +1,32 @@
+@model SimpleStoreSite.ViewModels.ProductFormVM
+
+<h2>Edit Product</h2>
+
+<form method="post">
+    <input type="hidden" name="Product.Id" value="@Model.Product.Id" />
+
+    <div class="row">
+        <label>Name</label>
+        <input name="Product.Name" value="@Model.Product.Name" />
+        <span class="err">@Html.ValidationMessage("Product.Name")</span>
+    </div>
+
+    <div class="row">
+        <label>Category</label>
+        <select name="Product.CategoryId">
+            @foreach (var c in Model.Categories)
+            {
+                <option value="@c.Id" selected="@(c.Id == Model.Product.CategoryId)">@c.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="row">
+        <label>Price</label>
+        <input name="Product.Price" value="@Model.Product.Price" />
+        <span class="err">@Html.ValidationMessage("Product.Price")</span>
+    </div>
+
+    <button class="btn" type="submit">Save</button>
+    <a class="btn ghost" href="/Products">Back</a>
+</form>

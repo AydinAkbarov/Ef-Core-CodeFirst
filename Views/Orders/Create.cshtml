@@ -1,0 +1,25 @@
+@model SimpleStoreSite.ViewModels.OrderFormVM
+
+<h2>New Order</h2>
+
+<form method="post">
+    <div class="row">
+        <label>Product</label>
+        <select name="Order.ProductId">
+            @foreach (var p in Model.Products)
+            {
+                <option value="@p.Id">@p.Name</option>
+            }
+        </select>
+        <span class="err">@Html.ValidationMessage("Order.ProductId")</span>
+    </div>
+
+    <div class="row">
+        <label>Quantity</label>
+        <input name="Order.Quantity" value="@Model.Order.Quantity" />
+        <span class="err">@Html.ValidationMessage("Order.Quantity")</span>
+    </div>
+
+    <button class="btn" type="submit">Save</button>
+    <a class="btn ghost" href="/Orders">Back</a>
+</form>

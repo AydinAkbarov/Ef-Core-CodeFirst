@@ -1,0 +1,35 @@
+@model List<SimpleStoreSite.Models.Order>
+
+<h2>Orders</h2>
+
+<p><a class="btn" href="/Orders/Create">New</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Unit</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@(o.Product?.Name ?? "-")</td>
+            <td>@o.Quantity</td>
+            <td>@o.UnitPrice</td>
+            <td>@o.Total</td>
+            <td>@o.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+            <td class="actions">
+                <a class="danger" href="/Orders/Delete/@o.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

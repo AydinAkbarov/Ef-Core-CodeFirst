@@ -1,0 +1,32 @@
+@model List<SimpleStoreSite.Models.Product>
+
+<h2>Products</h2>
+
+<p><a class="btn" href="/Products/Create">New</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+            <td>@(p.Category?.Name ?? "-")</td>
+            <td>@p.Price</td>
+            <td class="actions">
+                <a href="/Products/Edit/@p.Id">Edit</a>
+                <a class="danger" href="/Products/Delete/@p.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
