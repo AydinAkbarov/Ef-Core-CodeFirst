@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseInMemoryDatabase("store_db"));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("MyStoreDb"));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -27,7 +27,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapControllerRoute(
-    name: "default",
+    name: "main",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 SeedData.EnsureSeeded(app);
